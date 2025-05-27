@@ -1,3 +1,92 @@
-<a href="webtoon/index.html">
-  <img class="thumbnail" src="https://yoon6279.github.io/CannotBeErased/webtoon-thumb.png" alt="웹툰 썸네일">
-</a>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>지워지지 않는 것들 | Things That Remain</title>
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      color: #fff;
+      font-family: 'Pretendard Variable', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      font-weight: normal;
+      color: #aaa;
+      margin-bottom: 30px;
+    }
+
+    .grid {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .post {
+      background: #111;
+      padding: 20px;
+      border-radius: 12px;
+      transition: background 0.3s;
+    }
+
+    .post:hover {
+      background: #222;
+    }
+
+    .post img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .post-title {
+      font-size: 1.4rem;
+      margin: 12px 0 8px;
+    }
+
+    .post-button {
+      display: inline-block;
+      margin-top: 10px;
+      background: #444;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .post-button:hover {
+      background: #666;
+    }
+  </style>
+</head>
+<body>
+  <h1>지워지지 않는 것들</h1>
+  <h2>Things That Remain</h2>
+
+  <div class="grid">
+    <div class="post">
+      <a href="webtoon/index.html">
+        <img src="https://yoon6279.github.io/CannotBeErased/webtoon-thumb.png" alt="웹툰 썸네일">
+      </a>
+      <div class="post-title">웹툰: 지워지지 않는 것들</div>
+      <a class="post-button" href="webtoon/index.html">웹툰 보기</a>
+    </div>
+  </div>
+</body>
+</html>
