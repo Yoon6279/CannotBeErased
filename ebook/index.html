@@ -1,1 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>지워지지 않는 것들 - eBook</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/npm/pretendard@1.3.6/dist/web/static/pretendard.css');
 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Pretendard', sans-serif;
+    }
+
+    body {
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+    }
+
+    .controls {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .controls button {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    .controls button:hover {
+      background-color: #555;
+    }
+
+    .page-indicator {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 18px;
+      color: #ccc;
+    }
+
+    @media (max-width: 768px) {
+      .controls button {
+        flex: 1;
+        font-size: 14px;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1 style="margin-bottom: 20px;">지워지지 않는 것들 - eBook</h1>
+  <img id="ebook-image" src="../ebook/page1.jpg" alt="ebook page">
+  <div class="page-indicator" id="page-indicator">1 / 11</div>
+  <div class="controls">
+    <button onclick="prevPage()">← 이전</button>
+    <button onclick="nextPage()">다음 →</button>
+  </div>
+
+  <script>
+    const totalPages = 11;
+    let currentPage = 1;
+
+    function updatePage() {
+      const img = document.getElementById('ebook-image');
+      const indicator = document.getElementById('page-indicator');
+      img.src = `../ebook/page${currentPage}.jpg`;
+      indicator.textContent = `${currentPage} / ${totalPages}`;
+    }
+
+    function nextPage() {
+      if (currentPage < totalPages) {
+        currentPage++;
+        updatePage();
+      }
+    }
+
+    function prevPage() {
+      if (currentPage > 1) {
+        currentPage--;
+        updatePage();
+      }
+    }
+  </script>
+</body>
+</html>
