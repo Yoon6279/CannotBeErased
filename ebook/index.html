@@ -52,7 +52,7 @@
   <h1>지워지지 않는 것들 - eBook</h1>
 
   <div class="page-wrapper" id="page-wrapper">
-    <img src="../page1.jpg" alt="표지">
+    <img src="/CannotBeErased/page1.jpg" alt="표지">
   </div>
 
   <div class="page-indicator" id="page-indicator">표지</div>
@@ -72,19 +72,17 @@
       wrapper.innerHTML = '';
 
       if (currentIndex === 1) {
-        // Cover only
         const img = document.createElement('img');
-        img.src = '../page1.jpg';
+        img.src = '/CannotBeErased/page1.jpg';
         img.alt = '표지';
         wrapper.appendChild(img);
         indicator.textContent = '표지';
       } else {
-        // Show double pages
         const left = document.createElement('img');
         const right = document.createElement('img');
-        left.src = `../page${currentIndex}.jpg`;
+        left.src = `/CannotBeErased/page${currentIndex}.jpg`;
         left.alt = `page${currentIndex}`;
-        right.src = `../page${currentIndex + 1}.jpg`;
+        right.src = `/CannotBeErased/page${currentIndex + 1}.jpg`;
         right.alt = `page${currentIndex + 1}`;
         wrapper.appendChild(left);
         if (currentIndex + 1 <= totalPages) {
