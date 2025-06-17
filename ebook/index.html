@@ -1,152 +1,80 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>지워지지 않는 것들 | E-BOOK</title>
-  <link href="https://fonts.googleapis.com/css2?family=Pretendard&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <title>지워지지 않는 것들 - E-Book</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      background-color: black;
-      color: white;
+      background-color: #111;
+      color: #fff;
       font-family: 'Pretendard', sans-serif;
       text-align: center;
     }
-
     header img {
-      max-width: 250px;
-      margin: 40px auto 20px;
-      display: block;
+      width: 100%;
+      max-height: 150px;
+      object-fit: contain;
       cursor: pointer;
     }
-
     h1 {
-      font-size: 2rem;
-      margin: 0;
+      font-size: 2em;
+      margin-top: 20px;
     }
-
     h2 {
-      font-size: 1rem;
-      color: #ccc;
-      font-style: italic;
-      margin-bottom: 1rem;
+      font-size: 1.2em;
+      color: #aaa;
     }
-
-    .page-wrapper {
+    .page {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 20px;
       flex-wrap: wrap;
+      max-width: 90%;
       margin: 20px auto;
-      padding: 0 20px;
     }
-
-    .page-wrapper img {
+    .page img {
       width: 45%;
-      max-width: 400px;
-      height: auto;
-      box-shadow: 0 0 10px rgba(255,255,255,0.1);
-    }
-
-    .controls {
-      margin: 1rem;
-    }
-
-    .controls button {
-      padding: 10px 20px;
-      font-size: 14px;
-      margin: 0 10px;
-      background-color: white;
-      color: black;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .page-indicator {
-      font-size: 0.9rem;
-      color: #aaa;
-      margin-top: 0.5rem;
-    }
-
-    @media (max-width: 768px) {
-      .page-wrapper img {
-        width: 100%;
-      }
+      max-width: 300px;
     }
   </style>
 </head>
 <body>
-  <header>
-    <a href="../index.html">
-      <img src="../UNIARC_LOGO.png" alt="UNIARC 로고">
-    </a>
+  <header onclick="location.href='../index.html'">
+    <img src="../UNIARC_LOGO.png" alt="UNIARC Logo">
   </header>
-
   <h1>지워지지 않는 것들</h1>
-  <h2>E-BOOK</h2>
-
-  <div class="page-wrapper" id="page-wrapper">
+  <h2>E-Book</h2>
+  
+  <!-- 표지 단독 -->
+  <div class="page">
     <img src="../page1.jpg" alt="표지">
   </div>
 
-  <div class="page-indicator" id="page-indicator">표지</div>
-
-  <div class="controls">
-    <button onclick="prevPage()">← 이전</button>
-    <button onclick="nextPage()">다음 →</button>
+  <!-- 이후 2페이지씩 -->
+  <div class="page">
+    <img src="../page2.jpg" alt="Page 2">
+    <img src="../page3.jpg" alt="Page 3">
+  </div>
+  <div class="page">
+    <img src="../page4.jpg" alt="Page 4">
+    <img src="../page5.jpg" alt="Page 5">
+  </div>
+  <div class="page">
+    <img src="../page6.jpg" alt="Page 6">
+    <img src="../page7.jpg" alt="Page 7">
+  </div>
+  <div class="page">
+    <img src="../page8.jpg" alt="Page 8">
+    <img src="../page9.jpg" alt="Page 9">
+  </div>
+  <div class="page">
+    <img src="../page10.jpg" alt="Page 10">
+    <img src="../page11.jpg" alt="Page 11">
   </div>
 
-  <script>
-    const totalPages = 11;
-    let currentPage = 1;
-
-    function updatePages() {
-      const wrapper = document.getElementById("page-wrapper");
-      const indicator = document.getElementById("page-indicator");
-      wrapper.innerHTML = "";
-
-      if (currentPage === 1) {
-        const img = document.createElement("img");
-        img.src = "../page1.jpg";
-        img.alt = "표지";
-        wrapper.appendChild(img);
-        indicator.textContent = "표지";
-      } else {
-        const leftPage = document.createElement("img");
-        const rightPage = document.createElement("img");
-        leftPage.src = `../page${currentPage}.jpg`;
-        rightPage.src = `../page${currentPage + 1}.jpg`;
-        leftPage.alt = `page${currentPage}`;
-        rightPage.alt = `page${currentPage + 1}`;
-        wrapper.appendChild(leftPage);
-        if (currentPage + 1 <= totalPages) {
-          wrapper.appendChild(rightPage);
-        }
-        const last = Math.min(currentPage + 1, totalPages);
-        indicator.textContent = `${currentPage} - ${last} / ${totalPages}`;
-      }
-    }
-
-    function nextPage() {
-      if (currentPage === 1) {
-        currentPage = 2;
-      } else if (currentPage + 2 <= totalPages) {
-        currentPage += 2;
-      }
-      updatePages();
-    }
-
-    function prevPage() {
-      if (currentPage === 2) {
-        currentPage = 1;
-      } else if (currentPage - 2 >= 2) {
-        currentPage -= 2;
-      }
-      updatePages();
-    }
-  </script>
 </body>
 </html>
