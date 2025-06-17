@@ -2,103 +2,111 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>지워지지 않는 것들 | Things That Remain</title>
-  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>지워지지 않는 것들 | Things That Cannot Be Erased</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard&display=swap" rel="stylesheet" />
   <style>
-    body {
-      margin: 0;
-      background-color: #000;
-      color: #fff;
-      font-family: 'Pretendard Variable', sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px 20px;
+    * {
+      box-sizing: border-box;
     }
 
-    h1 {
-      font-size: 2.8rem;
-      margin-bottom: 10px;
+    body {
+      margin: 0;
+      background-color: black;
+      color: white;
+      font-family: 'Pretendard', sans-serif;
       text-align: center;
     }
 
+    header img {
+      width: 100%;
+      max-height: 250px;
+      object-fit: cover;
+    }
+
+    h1 {
+      margin-top: 2rem;
+      font-size: 2.5rem;
+    }
+
     h2 {
+      margin-top: 0.5rem;
       font-size: 1.2rem;
-      font-weight: normal;
-      color: #aaa;
-      margin-bottom: 30px;
+      font-weight: 300;
+      color: #ccc;
     }
 
     .grid {
       display: flex;
-      flex-direction: column;
-      gap: 30px;
-      width: 100%;
-      max-width: 800px;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 2rem;
+      gap: 1.5rem;
     }
 
-    .post {
-      background: #111;
-      padding: 20px;
+    .card {
+      background-color: #1e1e1e;
       border-radius: 12px;
-      transition: background 0.3s;
+      overflow: hidden;
+      width: 220px;
+      transition: transform 0.3s ease;
     }
 
-    .post:hover {
-      background: #222;
+    .card:hover {
+      transform: scale(1.05);
     }
 
-    .post img {
+    .card img {
       width: 100%;
-      border-radius: 8px;
+      height: 140px;
+      object-fit: cover;
       display: block;
     }
 
-    .post-title {
-      font-size: 1.5rem;
-      margin: 12px 0 8px;
-    }
-
-    .post-button {
-      display: inline-block;
-      margin-top: 10px;
-      background: #444;
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 6px;
-      text-decoration: none;
+    .card h3 {
+      margin: 1rem;
       font-size: 1rem;
-      transition: background 0.3s;
+      color: white;
     }
 
-    .post-button:hover {
-      background: #666;
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        width: 100%;
+        max-width: 90%;
+      }
     }
   </style>
 </head>
 <body>
+  <header>
+    <img src="UNIARC_LOGO.png" alt="UNIARC Logo">
+  </header>
+
   <h1>지워지지 않는 것들</h1>
-  <h2>Things That Remain</h2>
+  <h2>Things That Cannot Be Erased</h2>
 
   <div class="grid">
-    <!-- 웹툰 카드 -->
-    <div class="post">
-      <a href="webtoon/index.html">
-        <img src="https://yoon6279.github.io/CannotBeErased/webtoon-thumb.png" alt="웹툰 썸네일">
-      </a>
-      <div class="post-title">웹툰</div>
-      <a class="post-button" href="webtoon/index.html">웹툰 보기</a>
-    </div>
-
-    <!-- 뮤직비디오 카드 -->
-    <div class="post">
-      <a href="musicvideo/index.html">
-        <img src="https://yoon6279.github.io/CannotBeErased/musicvideo-thumb.png" alt="뮤직비디오 썸네일">
-      </a>
-      <div class="post-title">뮤직비디오</div>
-      <a class="post-button" href="musicvideo/index.html">뮤직비디오 보기</a>
-    </div>
+    <a href="webtoon/index.html" class="card">
+      <img src="webtoon-thumbnail.png" alt="웹툰 썸네일" />
+      <h3>웹툰</h3>
+    </a>
+    <a href="ebook/index.html" class="card">
+      <img src="ebook-thumbnail.png" alt="E-BOOK 썸네일" />
+      <h3>E-BOOK</h3>
+    </a>
+    <a href="musicvideo/index.html" class="card">
+      <img src="musicvideo-thumbnail.png" alt="뮤직비디오 썸네일" />
+      <h3>뮤직비디오</h3>
+    </a>
+    <a href="trailer/index.html" class="card">
+      <img src="trailer-thumbnail.png" alt="트레일러 썸네일" />
+      <h3>트레일러</h3>
+    </a>
   </div>
 </body>
 </html>
