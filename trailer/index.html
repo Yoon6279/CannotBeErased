@@ -2,50 +2,59 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>트레일러</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>지워지지 않는 것들 | 트레일러</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
       background-color: black;
       color: white;
-      font-family: Pretendard, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-    }
-
-    h1 {
-      margin-top: 2rem;
-      font-size: 2rem;
+      font-family: 'Pretendard', sans-serif;
       text-align: center;
     }
-
-    iframe {
-      width: 90%;
-      max-width: 800px;
-      height: 45vw;
-      max-height: 450px;
-      border: none;
-      margin-top: 2rem;
+    header img {
+      max-width: 250px;
+      margin: 40px auto 20px;
+      display: block;
+      cursor: pointer;
     }
-
-    a {
+    h1 {
+      font-size: 2rem;
+      margin: 0;
+    }
+    h2 {
+      font-size: 1rem;
       color: #ccc;
-      margin-top: 2rem;
-      text-decoration: underline;
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+    .video-wrapper {
+      max-width: 960px;
+      margin: 0 auto;
+      aspect-ratio: 16 / 9;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 12px;
     }
   </style>
 </head>
 <body>
-  <h1>🎬 트레일러</h1>
-  <iframe 
-    src="https://www.youtube.com/embed/Zgg09OcUoiY"
-    title="YouTube video player"
-    allowfullscreen
-  ></iframe>
-  <a href="../index.html">← 메인으로 돌아가기</a>
+  <header>
+    <a href="../index.html"><img src="../UNIARC_LOGO.png" alt="로고" /></a>
+  </header>
+  <h1>지워지지 않는 것들</h1>
+  <h2>트레일러</h2>
+
+  <div class="video-wrapper">
+    <iframe 
+      src="https://www.youtube.com/embed/Zgg09OcUoiY"
+      title="YouTube video player"
+      allowfullscreen
+    ></iframe>
+  </div>
 </body>
 </html>
