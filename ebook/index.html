@@ -2,79 +2,109 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>지워지지 않는 것들 - E-Book</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css2?family=Pretendard&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>지워지지 않는 것들 | E‑Book</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard&display=swap" rel="stylesheet" />
   <style>
+    * { box-sizing: border-box; margin:0; padding:0; }
     body {
-      margin: 0;
-      background-color: #111;
-      color: #fff;
-      font-family: 'Pretendard', sans-serif;
-      text-align: center;
+      font-family:'Pretendard',sans-serif;
+      background-color:#000;
+      color:#fff;
+      text-align:center;
     }
     header img {
-      width: 100%;
-      max-height: 150px;
-      object-fit: contain;
-      cursor: pointer;
+      max-width:250px;
+      margin:40px auto 10px;
+      display:block;
+      cursor:pointer;
     }
-    h1 {
-      font-size: 2em;
-      margin-top: 20px;
+    h1 { font-size:2em; margin:10px 0; }
+    h2 { font-size:1.1em; color:#aaa; margin-bottom:20px; }
+    .page-wrapper {
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:20px;
+      padding:20px;
     }
-    h2 {
-      font-size: 1.2em;
-      color: #aaa;
+    .page-wrapper img {
+      width:45%;
+      max-width:400px;
     }
-    .page {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      max-width: 90%;
-      margin: 20px auto;
+    .controls {
+      margin:20px 0;
     }
-    .page img {
-      width: 45%;
-      max-width: 300px;
+    .controls button {
+      padding:10px 20px;
+      margin:0 10px;
+      font-size:14px;
+      background:#fff;
+      color:#000;
+      border:none;
+      border-radius:5px;
+      cursor:pointer;
+    }
+    .page-indicator { color:#aaa; font-size:0.9em; }
+    @media(max-width:768px){
+      .page-wrapper img { width:100%; }
     }
   </style>
 </head>
 <body>
-  <header onclick="location.href='../index.html'">
-    <img src="../UNIARC_LOGO.png" alt="UNIARC Logo">
-  </header>
+  <header onclick="location.href='../index.html'"><img src="../UNIARC_LOGO.png" alt="로고"></header>
   <h1>지워지지 않는 것들</h1>
-  <h2>E-Book</h2>
-  
-  <!-- 표지 단독 -->
-  <div class="page">
+  <h2>E‑Book</h2>
+
+  <div class="page-wrapper" id="page-wrapper">
     <img src="../page1.jpg" alt="표지">
   </div>
+  <div class="page-indicator" id="page-indicator">표지</div>
 
-  <!-- 이후 2페이지씩 -->
-  <div class="page">
-    <img src="../page2.jpg" alt="Page 2">
-    <img src="../page3.jpg" alt="Page 3">
-  </div>
-  <div class="page">
-    <img src="../page4.jpg" alt="Page 4">
-    <img src="../page5.jpg" alt="Page 5">
-  </div>
-  <div class="page">
-    <img src="../page6.jpg" alt="Page 6">
-    <img src="../page7.jpg" alt="Page 7">
-  </div>
-  <div class="page">
-    <img src="../page8.jpg" alt="Page 8">
-    <img src="../page9.jpg" alt="Page 9">
-  </div>
-  <div class="page">
-    <img src="../page10.jpg" alt="Page 10">
-    <img src="../page11.jpg" alt="Page 11">
+  <div class="controls">
+    <button onclick="prevPage()">← 이전</button>
+    <button onclick="nextPage()">다음 →</button>
   </div>
 
+  <script>
+    const total = 11;
+    let idx = 1;
+
+    function render() {
+      const w = document.getElementById('page-wrapper');
+      const ind = document.getElementById('page-indicator');
+      w.innerHTML = '';
+
+      if(idx === 1) {
+        let img = document.createElement('img');
+        img.src = `../page1.jpg`; img.alt='표지';
+        w.appendChild(img);
+        ind.textContent = '표지';
+      } else {
+        let i2 = Math.min(idx, total-1);
+        let img1 = document.createElement('img');
+        let img2 = document.createElement('img');
+        img1.src = `../page${i2}.jpg`;
+        img2.src = `../page${i2+1}.jpg`;
+        w.appendChild(img1);
+        w.appendChild(img2);
+        ind.textContent = `${i2}-${i2+1} / ${total}`;
+      }
+    }
+
+    function nextPage(){
+      if(idx === 1) idx = 2;
+      else if(idx + 2 <= total) idx +=2;
+      render();
+    }
+
+    function prevPage() {
+      if(idx === 2) idx =1;
+      else if(idx >2) idx -=2;
+      render();
+    }
+
+    render();
+  </script>
 </body>
 </html>
