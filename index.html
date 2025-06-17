@@ -2,124 +2,121 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>지워지지 않는 것들 | Things That Cannot Be Erased</title>
+  <title>지워지지 않는 것들 - UNIARC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://fonts.googleapis.com/css2?family=Pretendard&display=swap" rel="stylesheet" />
   <style>
     * {
       box-sizing: border-box;
     }
-
     body {
       margin: 0;
-      background-color: black;
-      color: white;
       font-family: 'Pretendard', sans-serif;
+      background-color: #111;
+      color: #fff;
       text-align: center;
     }
-
+    header {
+      background-color: #111;
+      padding: 20px 0;
+    }
     header img {
-      max-width: 300px;
-      height: auto;
-      margin: 40px auto 20px;
-      display: block;
-      opacity: 0.9;
-      transition: transform 0.3s;
+      width: auto;
+      max-height: 120px;
+      cursor: pointer;
     }
-
-    header img:hover {
-      transform: scale(1.05);
-    }
-
     h1 {
-      margin: 0.5rem 0 0;
-      font-size: 2.5rem;
-      font-weight: 700;
-      letter-spacing: 1px;
+      font-size: 2.5em;
+      margin: 10px 0 5px;
+      color: #fff;
     }
-
     h2 {
-      margin-top: 0.3rem;
-      font-size: 1.1rem;
-      font-weight: 300;
-      color: #ccc;
-      font-style: italic;
-      opacity: 0.8;
+      font-size: 1.2em;
+      color: #aaa;
+      margin-bottom: 40px;
     }
-
-    .grid {
+    .menu {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      padding: 2rem;
-      gap: 1.5rem;
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto 60px;
+      padding: 0 20px;
     }
-
-    .card {
-      background-color: #1e1e1e;
-      border-radius: 12px;
+    .menu-item {
+      width: 250px;
+      background-color: #222;
+      border-radius: 10px;
       overflow: hidden;
-      width: 220px;
+      text-decoration: none;
+      color: #fff;
       transition: transform 0.3s ease;
-      box-shadow: 0 0 10px rgba(255,255,255,0.05);
     }
-
-    .card:hover {
+    .menu-item:hover {
       transform: scale(1.05);
     }
-
-    .card img {
+    .menu-item img {
       width: 100%;
-      height: 140px;
-      object-fit: cover;
       display: block;
     }
-
-    .card h3 {
-      margin: 1rem;
-      font-size: 1rem;
-      font-weight: 500;
-      color: white;
+    .menu-item span {
+      display: block;
+      padding: 15px;
+      font-size: 1.1em;
+      background-color: #1a1a1a;
+    }
+    footer {
+      margin: 60px 0 20px;
+      color: #666;
+      font-size: 0.9em;
+    }
+    footer strong {
+      color: #fff;
+      font-weight: bold;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    @media (max-width: 600px) {
-      .card {
-        width: 100%;
-        max-width: 90%;
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+      }
+      .menu-item {
+        width: 90%;
       }
     }
   </style>
 </head>
 <body>
-  <header>
+
+  <header onclick="location.href='index.html'">
     <img src="UNIARC_LOGO.png" alt="UNIARC Logo">
   </header>
 
   <h1>지워지지 않는 것들</h1>
   <h2>Things That Cannot Be Erased</h2>
 
-  <div class="grid">
-    <a href="webtoon/index.html" class="card">
-      <img src="webtoon-thumbnail.png" alt="웹툰 썸네일" />
-      <h3>웹툰</h3>
+  <div class="menu">
+    <a href="webtoon/index.html" class="menu-item">
+      <img src="webtoon-thumbnail.png" alt="웹툰 썸네일">
+      <span>웹툰 Webtoon</span>
     </a>
-    <a href="ebook/index.html" class="card">
-      <img src="ebook-thumbnail.png" alt="E-BOOK 썸네일" />
-      <h3>E-BOOK</h3>
+    <a href="ebook/index.html" class="menu-item">
+      <img src="ebook-thumbnail.png" alt="E-Book 썸네일">
+      <span>E-Book</span>
     </a>
-    <a href="musicvideo/index.html" class="card">
-      <img src="musicvideo-thumbnail.png" alt="뮤직비디오 썸네일" />
-      <h3>뮤직비디오</h3>
+    <a href="musicvideo/index.html" class="menu-item">
+      <img src="musicvideo-thumbnail.png" alt="뮤직비디오 썸네일">
+      <span>뮤직비디오 Music Video</span>
     </a>
-    <a href="trailer/index.html" class="card">
-      <img src="trailer-thumbnail.png" alt="트레일러 썸네일" />
-      <h3>트레일러</h3>
+    <a href="trailer/index.html" class="menu-item">
+      <img src="trailer-thumbnail.png" alt="트레일러 썸네일">
+      <span>트레일러 Trailer</span>
     </a>
   </div>
+
+  <footer>
+    By. <strong>Hwang Yun Hee</strong>
+  </footer>
+
 </body>
 </html>
