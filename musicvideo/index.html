@@ -2,46 +2,54 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>지워지지 않는 것들 | 뮤직비디오</title>
-  <link href="https://fonts.googleapis.com/css2?family=Pretendard&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard&display=swap" rel="stylesheet">
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family:'Pretendard',sans-serif;
-      background-color:#000;
-      color:#fff;
-      text-align:center;
+      background-color: #000;
+      color: #fff;
+      font-family: 'Pretendard', sans-serif;
+      text-align: center;
     }
     header img {
-      max-width:250px;
-      margin:40px auto 10px;
-      display:block;
-      cursor:pointer;
+      max-width: 250px;
+      margin: 40px auto 10px;
+      display: block;
+      cursor: pointer;
     }
-    h1 { font-size:2em; margin:10px 0; }
-    h2 { font-size:1.1em; color:#aaa; margin-bottom:20px; }
-    .video-container {
-      position:relative;
-      width:90%;
-      max-width:800px;
-      margin:20px auto;
-      padding-bottom:56.25%;
-      height:0;
+    h1 {
+      font-size: 2rem;
+      margin-top: 10px;
     }
-    .video-container iframe {
-      position:absolute;
-      width:100%;
-      height:100%;
-      border:none;
+    h2 {
+      font-size: 1rem;
+      color: #aaa;
+      margin-bottom: 30px;
+    }
+    .video-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .video-wrapper iframe {
+      width: 90%;
+      max-width: 800px;
+      aspect-ratio: 16 / 9;
+      border: none;
+      border-radius: 12px;
     }
   </style>
 </head>
 <body>
-  <header onclick="location.href='../index.html'"><img src="../UNIARC_LOGO.png" alt="로고"></header>
+  <header onclick="location.href='../index.html'">
+    <img src="../UNIARC_LOGO.png" alt="UNIARC 로고">
+  </header>
   <h1>지워지지 않는 것들</h1>
   <h2>Music Video</h2>
-  <div class="video-container">
+  <div class="video-wrapper">
     <iframe src="https://www.youtube.com/embed/nGgVQcoEfX0" allowfullscreen></iframe>
   </div>
 </body>
