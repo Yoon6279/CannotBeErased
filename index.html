@@ -19,21 +19,32 @@
     }
 
     header img {
-      width: 100%;
-      max-height: 250px;
-      object-fit: cover;
+      max-width: 300px;
+      height: auto;
+      margin: 40px auto 20px;
+      display: block;
+      opacity: 0.9;
+      transition: transform 0.3s;
+    }
+
+    header img:hover {
+      transform: scale(1.05);
     }
 
     h1 {
-      margin-top: 2rem;
+      margin: 0.5rem 0 0;
       font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
     }
 
     h2 {
-      margin-top: 0.5rem;
-      font-size: 1.2rem;
+      margin-top: 0.3rem;
+      font-size: 1.1rem;
       font-weight: 300;
       color: #ccc;
+      font-style: italic;
+      opacity: 0.8;
     }
 
     .grid {
@@ -50,6 +61,7 @@
       overflow: hidden;
       width: 220px;
       transition: transform 0.3s ease;
+      box-shadow: 0 0 10px rgba(255,255,255,0.05);
     }
 
     .card:hover {
@@ -66,6 +78,7 @@
     .card h3 {
       margin: 1rem;
       font-size: 1rem;
+      font-weight: 500;
       color: white;
     }
 
