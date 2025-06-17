@@ -2,49 +2,38 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>지워지지 않는 것들 - 웹툰</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css2?family=Pretendard&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>지워지지 않는 것들 | 웹툰</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard&display=swap" rel="stylesheet" />
   <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
     body {
-      margin: 0;
-      background-color: #111;
-      color: #fff;
-      font-family: 'Pretendard', sans-serif;
-      text-align: center;
+      font-family:'Pretendard',sans-serif;
+      background-color:#000;
+      color:#fff;
+      text-align:center;
     }
     header img {
-      width: 100%;
-      max-height: 150px;
-      object-fit: contain;
-      cursor: pointer;
+      max-width:250px;
+      margin:40px auto 10px;
+      display:block;
+      cursor:pointer;
     }
-    h1 {
-      font-size: 2em;
-      margin-top: 20px;
-    }
-    h2 {
-      font-size: 1.2em;
-      color: #aaa;
-    }
-    .webtoon {
-      max-width: 800px;
-      margin: 40px auto;
-    }
-    .webtoon img {
-      width: 100%;
-      margin-bottom: 10px;
+    h1 { font-size:2em; margin:10px 0; }
+    h2 { font-size:1.1em; color:#aaa; margin-bottom:20px; }
+    .content img {
+      width:90%;
+      max-width:800px;
+      margin:20px 0;
     }
   </style>
 </head>
 <body>
-  <header onclick="location.href='../index.html'">
-    <img src="../UNIARC_LOGO.png" alt="UNIARC Logo">
-  </header>
+  <header onclick="location.href='../index.html'"><img src="../UNIARC_LOGO.png" alt="로고"></header>
   <h1>지워지지 않는 것들</h1>
   <h2>Webtoon</h2>
-  <div class="webtoon">
-    <img src="../webtoon-1.png" alt="웹툰 페이지">
+  <div class="content">
+    <img src="../webtoon-1.png" alt="웹툰">
   </div>
 </body>
 </html>
