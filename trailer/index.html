@@ -1,28 +1,51 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>트레일러</title>
   <style>
     body {
-      background: #000;
-      color: #fff;
+      margin: 0;
+      background-color: black;
+      color: white;
       font-family: Pretendard, sans-serif;
-      text-align: center;
-      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
     }
-    video {
-      max-width: 100%;
-      height: auto;
-      border-radius: 12px;
+
+    h1 {
+      margin-top: 2rem;
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    iframe {
+      width: 90%;
+      max-width: 800px;
+      height: 45vw;
+      max-height: 450px;
+      border: none;
+      margin-top: 2rem;
+    }
+
+    a {
+      color: #ccc;
+      margin-top: 2rem;
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <h1>트레일러</h1>
-  <video controls>
-    <source src="/CannotBeErased/trailer-1.mp4" type="video/mp4">
-    이 브라우저는 비디오를 지원하지 않습니다.
-  </video>
+  <h1>🎬 트레일러</h1>
+  <iframe 
+    src="https://www.youtube.com/embed/Zgg09OcUoiY"
+    title="YouTube video player"
+    allowfullscreen
+  ></iframe>
+  <a href="../index.html">← 메인으로 돌아가기</a>
 </body>
 </html>
