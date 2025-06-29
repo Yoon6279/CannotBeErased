@@ -1,150 +1,136 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>지워지지 않는 것들 E-BOOK</title>
   <style>
     body {
       margin: 0;
       background-color: black;
       color: white;
-      font-family: 'Pretendard', sans-serif;
+      font-family: 'Arial', sans-serif;
       text-align: center;
     }
-
-    h1 {
-      margin-top: 20px;
-      font-size: 1.6em;
-      font-weight: 600;
+    .home-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
     }
-
+    .home-button a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    h1 {
+      margin-top: 80px;
+    }
     .page-info {
-      margin-bottom: 10px;
+      margin: 10px 0 20px;
       font-size: 14px;
       color: #ccc;
     }
-
-    .book-container {
+    .book {
       display: flex;
       justify-content: center;
-      align-items: center;
-      gap: 10px;
-      max-width: 100%;
-      flex-wrap: nowrap;
-      overflow: hidden;
+      gap: 20px;
     }
-
-    .book-page {
-      width: 512px;
-      height: auto;
-      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+    .book img {
+      width: 256px;
+      height: 400px;
+      object-fit: cover;
+      border: 1px solid #444;
+      box-shadow: 2px 2px 8px rgba(255, 255, 255, 0.1);
     }
-
     .controls {
-      margin: 20px 0;
+      margin-top: 30px;
     }
-
-    input[type=number] {
-      width: 60px;
-      padding: 5px;
+    .controls button {
+      background: none;
+      border: 1px solid white;
+      color: white;
       font-size: 14px;
-    }
-
-    button {
-      padding: 6px 12px;
-      font-size: 14px;
-      margin: 0 5px;
-      background-color: white;
-      color: black;
-      border: none;
+      padding: 8px 12px;
       cursor: pointer;
+      margin: 0 5px;
     }
-
-    button:hover {
-      background-color: #ddd;
-    }
-
-    @media (max-width: 1024px) {
-      .book-page {
-        width: 90%;
-      }
-      .book-container {
-        flex-direction: column;
-      }
+    .controls input {
+      width: 50px;
+      padding: 6px;
+      background-color: #111;
+      border: 1px solid white;
+      color: white;
+      text-align: center;
     }
   </style>
 </head>
 <body>
+
+  <div class="home-button">
+    <a href="/index.html">← Home</a>
+  </div>
+
   <h1>지워지지 않는 것들 E-BOOK</h1>
   <div class="page-info" id="page-info"></div>
 
-  <div class="book-container" id="bookContainer"></div>
+  <div class="book" id="book"></div>
 
   <div class="controls">
     <button onclick="prevPage()">이전</button>
+    <input type="number" id="pageInput" min="1" max="19" onchange="goToPage(this.value)">
     <button onclick="nextPage()">다음</button>
-    <br><br>
-    <label for="pageInput">이동할 페이지: </label>
-    <input type="number" id="pageInput" min="1" max="9" />
-    <button onclick="goToPage()">이동</button>
   </div>
 
   <script>
     const totalPages = 19;
-    const container = document.getElementById('bookContainer');
-    const pageInfo = document.getElementById('page-info');
-    const input = document.getElementById('pageInput');
+    let currentPage = 1;
 
-    let currentPair = 0;
+    function updateBook() {
+      const book = document.getElementById('book');
+      const pageInfo = document.getElementById('page-info');
+      book.innerHTML = '';
 
-    function showPages() {
-      container.innerHTML = '';
-      const left = currentPair * 2 + 1;
-      const right = left + 1;
+      const left = currentPage;
+      const right = currentPage + 1;
 
-      if (left <= totalPages) {
-        const img1 = document.createElement('img');
-        img1.src = `./${left}.jpg`;
-        img1.className = 'book-page';
-        container.appendChild(img1);
-      }
+      const leftImg = document.createElement('img');
+      leftImg.src = `images/${left}.jpg`;
+      book.appendChild(leftImg);
 
-      if (window.innerWidth > 1024 && right <= totalPages) {
-        const img2 = document.createElement('img');
-        img2.src = `./${right}.jpg`;
-        img2.className = 'book-page';
-        container.appendChild(img2);
+      if (right <= totalPages) {
+        const rightImg = document.createElement('img');
+        rightImg.src = `images/${right}.jpg`;
+        book.appendChild(rightImg);
       }
 
       pageInfo.textContent = `페이지 수: ${left}${right <= totalPages ? ` - ${right}` : ''} / ${totalPages}`;
-      input.value = currentPair + 1;
+      document.getElementById('pageInput').value = left;
     }
 
     function nextPage() {
-      if ((currentPair + 1) * 2 < totalPages) {
-        currentPair++;
-        showPages();
+      if (currentPage + 2 <= totalPages) {
+        currentPage += 2;
+        updateBook();
       }
     }
 
     function prevPage() {
-      if (currentPair > 0) {
-        currentPair--;
-        showPages();
+      if (currentPage - 2 >= 1) {
+        currentPage -= 2;
+        updateBook();
       }
     }
 
-    function goToPage() {
-      const page = parseInt(input.value);
-      if (!isNaN(page) && page >= 1 && page <= Math.ceil(totalPages / 2)) {
-        currentPair = page - 1;
-        showPages();
+    function goToPage(page) {
+      const p = parseInt(page);
+      if (p >= 1 && p <= totalPages) {
+        currentPage = p % 2 === 0 ? p - 1 : p; // 항상 홀수 페이지에서 시작
+        updateBook();
       }
     }
 
-    window.addEventListener('resize', showPages);
-    showPages();
+    updateBook();
   </script>
+
 </body>
 </html>
