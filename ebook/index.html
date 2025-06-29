@@ -1,136 +1,69 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>지워지지 않는 것들 E-BOOK</title>
-  <style>
-    body {
-      margin: 0;
-      background-color: black;
-      color: white;
-      font-family: 'Arial', sans-serif;
-      text-align: center;
-    }
-    .home-button {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-    }
-    .home-button a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 16px;
-    }
-    h1 {
-      margin-top: 80px;
-    }
-    .page-info {
-      margin: 10px 0 20px;
-      font-size: 14px;
-      color: #ccc;
-    }
-    .book {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-    .book img {
-      width: 256px;
-      height: 400px;
-      object-fit: cover;
-      border: 1px solid #444;
-      box-shadow: 2px 2px 8px rgba(255, 255, 255, 0.1);
-    }
-    .controls {
-      margin-top: 30px;
-    }
-    .controls button {
-      background: none;
-      border: 1px solid white;
-      color: white;
-      font-size: 14px;
-      padding: 8px 12px;
-      cursor: pointer;
-      margin: 0 5px;
-    }
-    .controls input {
-      width: 50px;
-      padding: 6px;
-      background-color: #111;
-      border: 1px solid white;
-      color: white;
-      text-align: center;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <div class="home-button">
-    <a href="/index.html">← Home</a>
+  <div class="header">
+    <a href="index.html"><img src="images/logo.png" alt="Home" class="logo"></a>
+    <h2>지워지지 않는 것들 E-BOOK</h2>
   </div>
 
-  <h1>지워지지 않는 것들 E-BOOK</h1>
-  <div class="page-info" id="page-info"></div>
+  <div class="page-info">
+    <span id="page-number">페이지 수: 1 - 2 / 19</span>
+    <input type="number" id="gotoPage" min="1" max="19" placeholder="이동할 페이지" />
+    <button onclick="goToPage()">이동</button>
+  </div>
 
-  <div class="book" id="book"></div>
+  <div class="ebook-container">
+    <img id="leftPage" src="images/ebook/1.jpg" alt="page 1">
+    <img id="rightPage" src="images/ebook/2.jpg" alt="page 2">
+  </div>
 
   <div class="controls">
-    <button onclick="prevPage()">이전</button>
-    <input type="number" id="pageInput" min="1" max="19" onchange="goToPage(this.value)">
-    <button onclick="nextPage()">다음</button>
+    <button onclick="prevPage()">⬅ 이전</button>
+    <button onclick="nextPage()">다음 ➡</button>
   </div>
 
   <script>
     const totalPages = 19;
     let currentPage = 1;
 
-    function updateBook() {
-      const book = document.getElementById('book');
-      const pageInfo = document.getElementById('page-info');
-      book.innerHTML = '';
+    function updatePages() {
+      const left = document.getElementById('leftPage');
+      const right = document.getElementById('rightPage');
+      const pageInfo = document.getElementById('page-number');
 
-      const left = currentPage;
-      const right = currentPage + 1;
-
-      const leftImg = document.createElement('img');
-      leftImg.src = `images/${left}.jpg`;
-      book.appendChild(leftImg);
-
-      if (right <= totalPages) {
-        const rightImg = document.createElement('img');
-        rightImg.src = `images/${right}.jpg`;
-        book.appendChild(rightImg);
-      }
-
-      pageInfo.textContent = `페이지 수: ${left}${right <= totalPages ? ` - ${right}` : ''} / ${totalPages}`;
-      document.getElementById('pageInput').value = left;
-    }
-
-    function nextPage() {
-      if (currentPage + 2 <= totalPages) {
-        currentPage += 2;
-        updateBook();
-      }
+      left.src = `images/ebook/${currentPage}.jpg`;
+      right.src = currentPage + 1 <= totalPages ? `images/ebook/${currentPage + 1}.jpg` : "";
+      pageInfo.textContent = `페이지 수: ${currentPage} - ${currentPage + 1 <= totalPages ? currentPage + 1 : ''} / ${totalPages}`;
     }
 
     function prevPage() {
-      if (currentPage - 2 >= 1) {
+      if (currentPage > 2) {
         currentPage -= 2;
-        updateBook();
+        updatePages();
       }
     }
 
-    function goToPage(page) {
-      const p = parseInt(page);
-      if (p >= 1 && p <= totalPages) {
-        currentPage = p % 2 === 0 ? p - 1 : p; // 항상 홀수 페이지에서 시작
-        updateBook();
+    function nextPage() {
+      if (currentPage + 1 < totalPages) {
+        currentPage += 2;
+        updatePages();
       }
     }
 
-    updateBook();
+    function goToPage() {
+      const page = parseInt(document.getElementById('gotoPage').value);
+      if (page >= 1 && page < totalPages) {
+        currentPage = page % 2 === 0 ? page - 1 : page;
+        updatePages();
+      }
+    }
+
+    updatePages();
   </script>
-
 </body>
 </html>
