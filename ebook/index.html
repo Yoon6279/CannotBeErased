@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>지워지지 않는 것들 E-Book</title>
+  <title>지워지지 않는 것들 E-BOOK</title>
   <style>
     body {
       margin: 0;
@@ -15,11 +15,14 @@
 
     h1 {
       margin-top: 20px;
-      font-size: 1.5em;
+      font-size: 1.6em;
+      font-weight: 600;
     }
 
     .page-info {
       margin-bottom: 10px;
+      font-size: 14px;
+      color: #ccc;
     }
 
     .book-container {
@@ -35,6 +38,7 @@
     .book-page {
       width: 512px;
       height: auto;
+      box-shadow: 0 0 10px rgba(255,255,255,0.2);
     }
 
     .controls {
@@ -44,13 +48,21 @@
     input[type=number] {
       width: 60px;
       padding: 5px;
-      font-size: 16px;
+      font-size: 14px;
     }
 
     button {
       padding: 6px 12px;
-      font-size: 16px;
+      font-size: 14px;
+      margin: 0 5px;
+      background-color: white;
+      color: black;
+      border: none;
       cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #ddd;
     }
 
     @media (max-width: 1024px) {
@@ -64,53 +76,48 @@
   </style>
 </head>
 <body>
-  <h1>📘 지워지지 않는 것들 E-BOOK</h1>
+  <h1>지워지지 않는 것들 E-BOOK</h1>
   <div class="page-info" id="page-info"></div>
 
   <div class="book-container" id="bookContainer"></div>
 
   <div class="controls">
-    <button onclick="prevPage()">⬅️ 이전</button>
-    <button onclick="nextPage()">다음 ➡️</button>
+    <button onclick="prevPage()">이전</button>
+    <button onclick="nextPage()">다음</button>
     <br><br>
-    <label>이동할 페이지: </label>
+    <label for="pageInput">이동할 페이지: </label>
     <input type="number" id="pageInput" min="1" max="9" />
     <button onclick="goToPage()">이동</button>
   </div>
 
   <script>
     const totalPages = 19;
-    const imagePrefix = 'ebook-page-'; // ../ebook/ebook-page-01.jpg
     const container = document.getElementById('bookContainer');
     const pageInfo = document.getElementById('page-info');
     const input = document.getElementById('pageInput');
 
     let currentPair = 0;
 
-    function pad(num) {
-      return num.toString().padStart(2, '0');
-    }
-
     function showPages() {
       container.innerHTML = '';
-      let left = currentPair * 2 + 1;
-      let right = left + 1;
+      const left = currentPair * 2 + 1;
+      const right = left + 1;
 
       if (left <= totalPages) {
         const img1 = document.createElement('img');
-        img1.src = `../ebook/${imagePrefix}${pad(left)}.jpg`;
+        img1.src = `./${left}.jpg`;
         img1.className = 'book-page';
         container.appendChild(img1);
       }
 
       if (window.innerWidth > 1024 && right <= totalPages) {
         const img2 = document.createElement('img');
-        img2.src = `../ebook/${imagePrefix}${pad(right)}.jpg`;
+        img2.src = `./${right}.jpg`;
         img2.className = 'book-page';
         container.appendChild(img2);
       }
 
-      pageInfo.textContent = `페이지 수: ${left} ${right <= totalPages ? `- ${right}` : ''} / ${totalPages}`;
+      pageInfo.textContent = `페이지 수: ${left}${right <= totalPages ? ` - ${right}` : ''} / ${totalPages}`;
       input.value = currentPair + 1;
     }
 
@@ -137,7 +144,7 @@
     }
 
     window.addEventListener('resize', showPages);
-    showPages(); // 초기 로딩
+    showPages();
   </script>
 </body>
 </html>
