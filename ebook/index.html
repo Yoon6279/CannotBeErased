@@ -1,101 +1,115 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>지워지지 않는 것들 E-BOOK</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>지워지지 않는 것들 | E-BOOK</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard&display=swap" rel="stylesheet" />
   <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
     body {
-      background-color: #fff;
-      color: #000;
-      font-family: 'Helvetica', 'Arial', sans-serif;
+      font-family: 'Pretendard', sans-serif;
+      background-color: #000;
+      color: #fff;
       text-align: center;
-      margin: 0;
-      padding: 0;
     }
 
-    .header {
-      display: flex;
-      align-items: center;
-      padding: 20px;
-    }
-
-    .header img {
-      height: 40px;
-      margin-right: 10px;
-    }
-
-    .header a {
-      text-decoration: none;
-      color: #000;
-      font-weight: bold;
-      font-size: 18px;
+    header img {
+      max-width: 250px;
+      margin: 40px auto 10px;
+      display: block;
+      cursor: pointer;
     }
 
     h1 {
-      font-size: 24px;
-      margin-bottom: 5px;
+      font-size: 2em;
+      margin: 10px 0;
+    }
+
+    h2 {
+      font-size: 1.1em;
+      color: #aaa;
+      margin-bottom: 20px;
     }
 
     .page-info {
-      margin-bottom: 15px;
-      font-size: 14px;
+      font-size: 0.9em;
+      color: #ccc;
+      margin-bottom: 10px;
     }
 
     .page-container {
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
       gap: 10px;
       margin-bottom: 20px;
     }
 
     .page-container img {
-      width: 512px;
-      height: 800px;
+      width: 90%;
+      max-width: 400px;
       object-fit: contain;
-      border: 1px solid #ccc;
+      border: 1px solid #444;
     }
 
     .controls {
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
 
     button {
-      padding: 5px 12px;
-      margin: 0 5px;
+      padding: 6px 12px;
       font-size: 14px;
+      margin: 5px;
+      background-color: #222;
+      color: #fff;
+      border: 1px solid #444;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #444;
     }
 
     input[type="number"] {
-      width: 50px;
+      padding: 5px;
+      width: 60px;
       font-size: 14px;
-      padding: 3px;
+      background: #111;
+      color: #fff;
+      border: 1px solid #555;
       text-align: center;
     }
   </style>
 </head>
 <body>
-  <div class="header">
-    <a href="/index.html">
-      <img src="../logo.png" alt="Home"> Home
-    </a>
-  </div>
+  <!-- 상단 로고 -->
+  <header onclick="location.href='../index.html'">
+    <img src="../UNIARC_LOGO.png" alt="로고">
+  </header>
 
-  <h1>지워지지 않는 것들 E-BOOK</h1>
+  <!-- 제목 -->
+  <h1>지워지지 않는 것들</h1>
+  <h2>E-BOOK</h2>
+
+  <!-- 페이지 정보 -->
   <div class="page-info" id="pageInfo">페이지 수: 1 - 2 / 19</div>
 
+  <!-- 이미지 2장 -->
   <div class="page-container">
     <img id="page1" src="1.jpg" alt="page 1">
     <img id="page2" src="2.jpg" alt="page 2">
   </div>
 
+  <!-- 페이지 이동 -->
   <div class="controls">
     <button onclick="prevPage()">← 이전</button>
-    <button onclick="nextPage()">다음 →</button>
-    <br><br>
-    <input type="number" id="pageInput" min="1" max="18" value="1">
+    <button onclick="nextPage()">다음 →</button><br />
+    <input type="number" id="pageInput" min="1" max="18" value="1" />
     <button onclick="goToPage()">이동</button>
   </div>
 
+  <!-- 스크립트 -->
   <script>
     let currentPage = 1;
     const totalPages = 19;
