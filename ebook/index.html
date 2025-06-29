@@ -1,69 +1,132 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>지워지지 않는 것들 E-BOOK</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-color: #fff;
+      color: #000;
+      font-family: 'Helvetica', 'Arial', sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .header img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .header a {
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+
+    .page-info {
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+
+    .page-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .page-container img {
+      width: 512px;
+      height: 800px;
+      object-fit: contain;
+      border: 1px solid #ccc;
+    }
+
+    .controls {
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 5px 12px;
+      margin: 0 5px;
+      font-size: 14px;
+    }
+
+    input[type="number"] {
+      width: 50px;
+      font-size: 14px;
+      padding: 3px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
   <div class="header">
-    <a href="index.html"><img src="images/logo.png" alt="Home" class="logo"></a>
-    <h2>지워지지 않는 것들 E-BOOK</h2>
+    <a href="/index.html">
+      <img src="../logo.png" alt="Home"> Home
+    </a>
   </div>
 
-  <div class="page-info">
-    <span id="page-number">페이지 수: 1 - 2 / 19</span>
-    <input type="number" id="gotoPage" min="1" max="19" placeholder="이동할 페이지" />
-    <button onclick="goToPage()">이동</button>
-  </div>
+  <h1>지워지지 않는 것들 E-BOOK</h1>
+  <div class="page-info" id="pageInfo">페이지 수: 1 - 2 / 19</div>
 
-  <div class="ebook-container">
-    <img id="leftPage" src="images/ebook/1.jpg" alt="page 1">
-    <img id="rightPage" src="images/ebook/2.jpg" alt="page 2">
+  <div class="page-container">
+    <img id="page1" src="1.jpg" alt="page 1">
+    <img id="page2" src="2.jpg" alt="page 2">
   </div>
 
   <div class="controls">
-    <button onclick="prevPage()">⬅ 이전</button>
-    <button onclick="nextPage()">다음 ➡</button>
+    <button onclick="prevPage()">← 이전</button>
+    <button onclick="nextPage()">다음 →</button>
+    <br><br>
+    <input type="number" id="pageInput" min="1" max="18" value="1">
+    <button onclick="goToPage()">이동</button>
   </div>
 
   <script>
-    const totalPages = 19;
     let currentPage = 1;
+    const totalPages = 19;
 
     function updatePages() {
-      const left = document.getElementById('leftPage');
-      const right = document.getElementById('rightPage');
-      const pageInfo = document.getElementById('page-number');
-
-      left.src = `images/ebook/${currentPage}.jpg`;
-      right.src = currentPage + 1 <= totalPages ? `images/ebook/${currentPage + 1}.jpg` : "";
-      pageInfo.textContent = `페이지 수: ${currentPage} - ${currentPage + 1 <= totalPages ? currentPage + 1 : ''} / ${totalPages}`;
+      document.getElementById('page1').src = `${currentPage}.jpg`;
+      document.getElementById('page2').src = `${currentPage + 1}.jpg`;
+      document.getElementById('pageInfo').textContent = `페이지 수: ${currentPage} - ${currentPage + 1} / ${totalPages}`;
     }
 
     function prevPage() {
-      if (currentPage > 2) {
+      if (currentPage > 1) {
         currentPage -= 2;
         updatePages();
       }
     }
 
     function nextPage() {
-      if (currentPage + 1 < totalPages) {
+      if (currentPage + 2 <= totalPages) {
         currentPage += 2;
         updatePages();
       }
     }
 
     function goToPage() {
-      const page = parseInt(document.getElementById('gotoPage').value);
+      let page = parseInt(document.getElementById('pageInput').value);
       if (page >= 1 && page < totalPages) {
         currentPage = page % 2 === 0 ? page - 1 : page;
         updatePages();
       }
     }
-
-    updatePages();
   </script>
 </body>
 </html>
